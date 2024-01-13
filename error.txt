@@ -1,0 +1,73 @@
+sudo nixos-rebuild switch --flake .#default --option --eval-cache false
+[sudo] password for gabbar: 
+warning: updating lock file '/home/gabbar/minemine/flake.lock':
+• Added input 'spicetify-nix':
+    'github:the-argus/spicetify-nix/1325416f951d6a82cfddb1289864ad782e2b87c4' (2024-01-02)
+• Added input 'spicetify-nix/flake-utils':
+    'github:numtide/flake-utils/a1720a10a6cfe8234c0e93907ffe81be440f4cef' (2023-05-31)
+• Added input 'spicetify-nix/flake-utils/systems':
+    'github:nix-systems/default/da67096a3b9bf56a91d16901293e51ba5b49a27e' (2023-04-09)
+• Added input 'spicetify-nix/nixpkgs':
+    'github:NixOS/nixpkgs/4729ffac6fd12e26e5a8de002781ffc49b0e94b7' (2023-06-06)
+building the system configuration...
+error:
+       … while calling the 'head' builtin
+
+         at /nix/store/80v3x99d9cl7h9fbhqrpajwg4vjyxg6y-source/lib/attrsets.nix:922:11:
+
+          921|         || pred here (elemAt values 1) (head values) then
+          922|           head values
+             |           ^
+          923|         else
+
+       … while evaluating the attribute 'value'
+
+         at /nix/store/80v3x99d9cl7h9fbhqrpajwg4vjyxg6y-source/lib/modules.nix:807:9:
+
+          806|     in warnDeprecation opt //
+          807|       { value = builtins.addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          808|         inherit (res.defsFinal') highestPrio;
+
+       (stack trace truncated; use '--show-trace' to show the full trace)
+
+       error: infinite recursion encountered
+
+       at /nix/store/80v3x99d9cl7h9fbhqrpajwg4vjyxg6y-source/lib/modules.nix:506:28:
+
+          505|         builtins.addErrorContext (context name)
+          506|           (args.${name} or config._module.args.${name})
+             |                            ^
+          507|       ) (lib.functionArgs f);
+
+[gabbar@nixos:~/minemine]$ sudo nixos-rebuild switch --flake .#default
+building the system configuration...
+error:
+       … while calling the 'head' builtin
+
+         at /nix/store/80v3x99d9cl7h9fbhqrpajwg4vjyxg6y-source/lib/attrsets.nix:922:11:
+
+          921|         || pred here (elemAt values 1) (head values) then
+          922|           head values
+             |           ^
+          923|         else
+
+       … while evaluating the attribute 'value'
+
+         at /nix/store/80v3x99d9cl7h9fbhqrpajwg4vjyxg6y-source/lib/modules.nix:807:9:
+
+          806|     in warnDeprecation opt //
+          807|       { value = builtins.addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          808|         inherit (res.defsFinal') highestPrio;
+
+       (stack trace truncated; use '--show-trace' to show the full trace)
+
+       error: infinite recursion encountered
+
+       at /nix/store/80v3x99d9cl7h9fbhqrpajwg4vjyxg6y-source/lib/modules.nix:506:28:
+
+          505|         builtins.addErrorContext (context name)
+          506|           (args.${name} or config._module.args.${name})
+             |                            ^
+          507|       ) (lib.functionArgs f);
