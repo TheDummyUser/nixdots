@@ -10,6 +10,8 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
   outputs = inputs @ {
@@ -36,8 +38,15 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              extraSpecialArgs = {
+                inherit inputs system user;
+              };
+
               users.${user} = {
-                imports = [./home.nix];
+                imports = [
+                  inputs.spicetify-nix.homeManagerModule
+                  ./home.nix
+                ];
 
                 home = {
                   username = user;
