@@ -17,7 +17,7 @@
   boot.loader.grub.devices = [ "nodev" ];
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true; # set to false if you only have NixOS installed or just remove the line
-	
+
 
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -133,11 +133,18 @@
      swappy
      dunst
      ranger
-     obsidian
      nodejs
      clang
+     networkmanagerapplet
+     (assert (lib.assertMsg (obsidian.version == "1.4.16") "obsidian: has wayland crash been fixed?");
+            obsidian.override {
+              electron = electron_24.overrideAttrs (_: {
+                preFixup = "patchelf --add-needed ${libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
+                meta.knownVulnerabilities = []; # NixOS/nixpkgs#273611
+              });
+            })
   ];
-  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];
   services = {
 	emacs = {
 	enable = true;
@@ -148,17 +155,17 @@
 
 # hyprland
 
-	programs.hyprland = { # we use this instead of putting it in systemPackages/users  
-  		enable = true;  
-  		xwayland.enable = true;  
-  	#	nvidiaPatches = true; # ONLY use this line if you have an nvidia card  
+	programs.hyprland = { # we use this instead of putting it in systemPackages/users
+  		enable = true;
+  		xwayland.enable = true;
+  	#	nvidiaPatches = true; # ONLY use this line if you have an nvidia card
 	};
 
-	environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps 
-	hardware.opengl = {  
-  	enable = true;  
-  	driSupport = true;  
-  	driSupport32Bit = true;  
+	environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps
+	hardware.opengl = {
+  	enable = true;
+  	driSupport = true;
+  	driSupport32Bit = true;
 	};
 
 nixpkgs = {
