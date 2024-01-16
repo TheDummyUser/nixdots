@@ -15,6 +15,7 @@ in {
       fullAppDisplay
       shuffle # shuffle+ (special characters are sanitized out of ext names)
       hidePodcasts
+      adblock
     ];
   };
 
@@ -36,6 +37,5 @@ in {
     gtk.enable = true;
     x11.enable = true;
   };
-
 
 }

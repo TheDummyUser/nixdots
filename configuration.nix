@@ -99,6 +99,20 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.defaultUserShell = pkgs.zsh;
+    programs = {
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+      ohMyZsh = {
+        enable = true;
+        theme = "gentoo";
+      };
+    };
+  };
+
+
   users.users.gabbar = {
     isNormalUser = true;
     description = "gabbar";
@@ -179,7 +193,7 @@ nixpkgs = {
   };
 
 fonts.packages = with pkgs; [
-  (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
+  (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
 ];
 
 
@@ -211,5 +225,9 @@ fonts.packages = with pkgs; [
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
+  fonts.fonts = with pkgs; [
+    jetbrains-mono
+    ubuntu_font_family
+  ];
 
 }
