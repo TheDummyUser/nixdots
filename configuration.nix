@@ -102,6 +102,13 @@
   users.defaultUserShell = pkgs.zsh;
     programs = {
     zsh = {
+      shellAliases = {
+    ll = "ls -l";
+    update = "cd ~/minemine && sudo nixos-rebuild switch --flake .#default && cd ~/";
+    ff = "clear && fastfetch";
+    anime = "clear && ani-cli --vlc -q 1080p";
+  };
+  histSize = 10000;
       enable = true;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
@@ -131,14 +138,21 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-     discord
+     ani-cli
+     zip
+     unzip
+     vlc
+     kdeconnect
+     qbittorrent
      git
+     pavucontrol
      swww
      rofi
      bashmount
      xfce.thunar
      fastfetch
-     foot
+     # foot
+     tree
      libsixel
      waybar
      grim
@@ -147,9 +161,13 @@
      swappy
      dunst
      ranger
+     yazi
+     cava
      nodejs
      clang
      networkmanagerapplet
+     playerctl
+     vesktop
      (assert (lib.assertMsg (obsidian.version == "1.4.16") "obsidian: has wayland crash been fixed?");
             obsidian.override {
               electron = electron_24.overrideAttrs (_: {
@@ -159,6 +177,8 @@
             })
   ];
   nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];
+
+
   services = {
 	emacs = {
 	enable = true;
@@ -167,13 +187,16 @@
 	};
 	};
 
+
+  # swap file...
+
 # hyprland
 
-	programs.hyprland = { # we use this instead of putting it in systemPackages/users
-  		enable = true;
-  		xwayland.enable = true;
-  	#	nvidiaPatches = true; # ONLY use this line if you have an nvidia card
-	};
+  programs.hyprland = { # we use this instead of putting it in systemPackages/users
+      enable = true;
+      xwayland.enable = true;
+      # nvidiaPatches = true; # ONLY use this line if you have an nvidia card
+ };
 
 	environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps
 	hardware.opengl = {
@@ -193,7 +216,10 @@ nixpkgs = {
   };
 
 fonts.packages = with pkgs; [
-  (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
+  jetbrains-mono
+  fira-code-symbols
+  ubuntu_font_family
 ];
 
 
@@ -225,9 +251,5 @@ fonts.packages = with pkgs; [
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-  fonts.fonts = with pkgs; [
-    jetbrains-mono
-    ubuntu_font_family
-  ];
 
 }

@@ -5,11 +5,12 @@
 }: let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
 in {
+
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "mocha";
+    theme = spicePkgs.themes.Onepunch;
+    colorScheme = "Legacy";
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay
@@ -37,5 +38,10 @@ in {
     gtk.enable = true;
     x11.enable = true;
   };
+
+
+  imports = [
+    ./shell/foot.nix
+  ];
 
 }
