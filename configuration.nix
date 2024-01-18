@@ -5,10 +5,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   # boot.loader.systemd-boot.enable = true;
@@ -16,17 +15,15 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.devices = [ "nodev" ];
   boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true; # set to false if you only have NixOS installed or just remove the line
-
+  boot.loader.grub.useOSProber =
+    true; # set to false if you only have NixOS installed or just remove the line
 
   boot.supportedFilesystems = [ "ntfs" ];
 
-  fileSystems."/mnt/Localdisk" =
-    { device = "/dev/disk/by-uuid/F21C2B081C2AC805";
-      fsType = "ntfs-3g";
-    };
-
-
+  fileSystems."/mnt/Localdisk" = {
+    device = "/dev/disk/by-uuid/F21C2B081C2AC805";
+    fsType = "ntfs-3g";
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -68,7 +65,6 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -100,15 +96,21 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.defaultUserShell = pkgs.zsh;
-    programs = {
+  programs = {
     zsh = {
       shellAliases = {
-    ll = "ls -l";
-    update = "cd ~/minemine && sudo nixos-rebuild switch --flake .#default && cd ~/";
-    ff = "clear && fastfetch";
-    anime = "clear && ani-cli --vlc -q 1080p";
-  };
-  histSize = 10000;
+        ld = "eza --icons always -lD";
+        lf = "eza --icons always -lF --color=always | grep -v /";
+        lh = "eza --icons always -dl .* --group-directories-first";
+        ll = "eza --icons always -al --group-directories-first";
+        ls = "eza --icons always -alF --color=always --sort=size | grep -v /";
+        lt = "eza --icons always -al --sort=modified";
+        update =
+          "cd ~/minemine && sudo nixos-rebuild switch --flake .#default && cd ~/";
+        ff = "clear && fastfetch";
+        anime = "clear && ani-cli --vlc -q 1080p";
+      };
+      histSize = 10000;
       enable = true;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
@@ -119,15 +121,15 @@
     };
   };
 
-
   users.users.gabbar = {
     isNormalUser = true;
     description = "gabbar";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        firefox
+        #  thunderbird
+      ];
   };
 
   # Allow unfree packages
@@ -136,94 +138,100 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-     ani-cli
-     zip
-     unzip
-     vlc
-     kdeconnect
-     qbittorrent
-     git
-     pavucontrol
-     swww
-     rofi
-     bashmount
-     xfce.thunar
-     fastfetch
-     # foot
-     tree
-     libsixel
-     waybar
-     grim
-     slurp
-     pywal
-     swappy
-     dunst
-     ranger
-     yazi
-     cava
-     nodejs
-     clang
-     networkmanagerapplet
-     playerctl
-     vesktop
-     (assert (lib.assertMsg (obsidian.version == "1.4.16") "obsidian: has wayland crash been fixed?");
-            obsidian.override {
-              electron = electron_24.overrideAttrs (_: {
-                preFixup = "patchelf --add-needed ${libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
-                meta.knownVulnerabilities = []; # NixOS/nixpkgs#273611
-              });
-            })
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    ani-cli
+    feh
+    colorz
+    nixfmt
+    neofetch
+    zip
+    unzip
+    vlc
+    kdeconnect
+    qbittorrent
+    git
+    pavucontrol
+    swww
+    rofi
+    bashmount
+    xfce.thunar
+    fastfetch
+    tree
+    libsixel
+    waybar
+    grim
+    slurp
+    pywal
+    swappy
+    dunst
+    ranger
+    yazi
+    cava
+    nodejs
+    clang
+    networkmanagerapplet
+    playerctl
+    discord
+    btop
+    (assert (lib.assertMsg (obsidian.version == "1.4.16")
+      "obsidian: has wayland crash been fixed?");
+      obsidian.override {
+        electron = electron_24.overrideAttrs (_: {
+          preFixup =
+            "patchelf --add-needed ${libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
+          meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
+        });
+      })
   ];
   nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];
 
-
   services = {
-	emacs = {
-	enable = true;
-	package = pkgs.emacs-gtk;
-	install = true;
-	};
-	};
-
+    emacs = {
+      enable = true;
+      package = pkgs.emacs-gtk;
+      install = true;
+    };
+  };
 
   # swap file...
 
-# hyprland
+  # hyprland
 
-  programs.hyprland = { # we use this instead of putting it in systemPackages/users
+  programs.hyprland =
+    { # we use this instead of putting it in systemPackages/users
       enable = true;
       xwayland.enable = true;
       # nvidiaPatches = true; # ONLY use this line if you have an nvidia card
- };
+    };
 
-	environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps
-	hardware.opengl = {
-  	enable = true;
-  	driSupport = true;
-  	driSupport32Bit = true;
-	};
+  environment.sessionVariables.NIXOS_OZONE_WL =
+    "1"; # This variable fixes electron apps
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
-nixpkgs = {
+  nixpkgs = {
     overlays = [
       (self: super: {
         waybar = super.waybar.overrideAttrs (oldAttrs: {
-          mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true" "-Dmpd=enabled"];
+          mesonFlags = oldAttrs.mesonFlags
+            ++ [ "-Dexperimental=true" "-Dmpd=enabled" ];
         });
       })
     ];
   };
 
-fonts.packages = with pkgs; [
-  (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
-  jetbrains-mono
-  fira-code-symbols
-  ubuntu_font_family
-];
-
-
-
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {
+      fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ];
+    })
+    jetbrains-mono
+    fira-code-symbols
+    ubuntu_font_family
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

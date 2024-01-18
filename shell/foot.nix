@@ -10,7 +10,6 @@
         font="JetBrains Mono:size=12";
         pad="10x10";
         term="foot";
-        dpi-aware="no";
       };
       scrollback ={
         lines=2000;

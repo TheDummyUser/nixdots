@@ -1,9 +1,5 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: let
-  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+{ inputs, pkgs, ... }:
+let spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
 in {
 
   # configure spicetify :)
@@ -27,7 +23,7 @@ in {
     font.name = "JetBrains Mono";
     theme.package = pkgs.vimix-gtk-themes;
     theme.name = "vimix-dark-doder";
-    iconTheme.package =  pkgs.papirus-icon-theme;
+    iconTheme.package = pkgs.papirus-icon-theme;
     iconTheme.name = "Papirus-Dark";
   };
 
@@ -39,9 +35,13 @@ in {
     x11.enable = true;
   };
 
+  #programs.eza = {
+  #  enable = true;
+  #  enableAliases = true;
+  #};
 
-  imports = [
-    ./shell/foot.nix
-  ];
+  #imports
+
+  imports = [ ./shell/eza.nix ./shell/foot.nix ];
 
 }
