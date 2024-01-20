@@ -92,6 +92,16 @@
     #media-session.enable = true;
   };
   services.gvfs.enable = true;
+
+  #cleaning
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 3d";
+  };
+  nix.optimise.automatic = true;
+  nix.optimise.dates = [ "03:45" ];
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -110,6 +120,7 @@
         ll = "eza --icons always -al --group-directories-first";
         ls = "eza --icons always -alF --color=always --sort=size | grep -v /";
         lt = "eza --icons always -al --sort=modified";
+        doom = "~/.config/emacs/bin/doom";
         update =
           "cd ~/minemine && sudo nixos-rebuild switch --flake .#default && cd ~/";
         ff = "clear && fastfetch";
@@ -146,6 +157,8 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
     realesrgan-ncnn-vulkan
+    ripgrep
+    fd
     ani-cli
     feh
     colorz
@@ -180,6 +193,10 @@
     playerctl
     discord
     btop
+    multimarkdown
+    shellcheck
+    shfmt
+    gcc
     (pkgs.callPackage ./shell/pokemon-colorscripts.nix { })
     (assert (lib.assertMsg (obsidian.version == "1.4.16")
       "obsidian: has wayland crash been fixed?");

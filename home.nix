@@ -42,6 +42,9 @@ in {
 
   #imports
 
-  imports = [ ./shell/eza.nix ./shell/foot.nix ];
+  imports = [
+    ./shell/eza.nix # eza
+    ./shell/foot.nix # foot
+  ];
 
 }
