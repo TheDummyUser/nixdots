@@ -7,6 +7,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./sddm/sddm.nix
   ];
 
   # Bootloader.
@@ -90,7 +91,7 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
+  services.gvfs.enable = true;
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -98,6 +99,10 @@
   users.defaultUserShell = pkgs.zsh;
   programs = {
     zsh = {
+      #loginShellInit = "wal -R";
+      #extraConfig = "(wal -R)";
+      interactiveShellInit =
+        "(wal -R) && clear && pokemon-colorscripts -r --no-title";
       shellAliases = {
         ld = "eza --icons always -lD";
         lf = "eza --icons always -lF --color=always | grep -v /";
@@ -140,6 +145,7 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
+    realesrgan-ncnn-vulkan
     ani-cli
     feh
     colorz
@@ -155,7 +161,7 @@
     swww
     rofi
     bashmount
-    xfce.thunar
+    pcmanfm
     fastfetch
     tree
     libsixel
@@ -174,6 +180,7 @@
     playerctl
     discord
     btop
+    (pkgs.callPackage ./shell/pokemon-colorscripts.nix { })
     (assert (lib.assertMsg (obsidian.version == "1.4.16")
       "obsidian: has wayland crash been fixed?");
       obsidian.override {
