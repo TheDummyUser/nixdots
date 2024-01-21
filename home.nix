@@ -5,8 +5,8 @@ in {
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.Onepunch;
-    colorScheme = "Legacy";
+    theme = spicePkgs.themes.Dribbblish;
+    colorScheme = "Lunar";
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay
@@ -43,8 +43,13 @@ in {
   #imports
 
   imports = [
+    #./shell/starship.nix # starship
     ./shell/eza.nix # eza
     ./shell/foot.nix # foot
+    #./shell/git.nix
+
+    # config
+    #./config/cava.nix
   ];
 
 }

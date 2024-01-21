@@ -8,6 +8,8 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./sddm/sddm.nix
+    ./modules/nix.nix
+    ./modules/zsh.nix
   ];
 
   # Bootloader.
@@ -24,9 +26,8 @@
   fileSystems."/mnt/Localdisk" = {
     device = "/dev/disk/by-uuid/F21C2B081C2AC805";
     fsType = "ntfs-3g";
+    # options = [ "rw" "uid=gabbar" ];
   };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -94,56 +95,18 @@
   services.gvfs.enable = true;
 
   #cleaning
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 3d";
-  };
-  nix.optimise.automatic = true;
-  nix.optimise.dates = [ "03:45" ];
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.defaultUserShell = pkgs.zsh;
-  programs = {
-    zsh = {
-      #loginShellInit = "wal -R";
-      #extraConfig = "(wal -R)";
-      interactiveShellInit =
-        "(wal -R) && clear && pokemon-colorscripts -r --no-title";
-      shellAliases = {
-        ld = "eza --icons always -lD";
-        lf = "eza --icons always -lF --color=always | grep -v /";
-        lh = "eza --icons always -dl .* --group-directories-first";
-        ll = "eza --icons always -al --group-directories-first";
-        ls = "eza --icons always -alF --color=always --sort=size | grep -v /";
-        lt = "eza --icons always -al --sort=modified";
-        doom = "~/.config/emacs/bin/doom";
-        update =
-          "cd ~/minemine && sudo nixos-rebuild switch --flake .#default && cd ~/";
-        ff = "clear && fastfetch";
-        anime = "clear && ani-cli --vlc -q 1080p";
-      };
-      histSize = 10000;
-      enable = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-      ohMyZsh = {
-        enable = true;
-        theme = "gentoo";
-      };
-    };
-  };
 
   users.users.gabbar = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "gabbar";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs;
       [
-        firefox
         #  thunderbird
       ];
   };
@@ -151,11 +114,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  programs.kdeconnect.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
+    floorp
     realesrgan-ncnn-vulkan
     ripgrep
     fd
