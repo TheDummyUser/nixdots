@@ -43,7 +43,7 @@ in {
   #imports
 
   imports = [
-    #./shell/starship.nix # starship
+    ./shell/starship.nix # starship
     ./shell/eza.nix # eza
     ./shell/foot.nix # foot
     #./shell/git.nix
