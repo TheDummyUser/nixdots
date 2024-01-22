@@ -2,6 +2,7 @@
   description = "My nix config";
 
   inputs = {
+    nix-colors.url = "github:misterio77/nix-colors";
     # change to github:nixos/nixpkgs/nixos-unstable for unstable
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
 
@@ -14,13 +15,8 @@
     spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    ...
-  }: {
-    nixosConfigurations = let
-      user = "gabbar";
+  outputs = inputs@{ self, nixpkgs, ... }: {
+    nixosConfigurations = let user = "gabbar";
     in {
       # update with `nix flake update`
       # rebuild with `nixos-rebuild switch --flake .#dev`
@@ -38,13 +34,12 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {
-                inherit inputs system user;
-              };
+              extraSpecialArgs = { inherit inputs system user; };
 
               users.${user} = {
                 imports = [
                   inputs.spicetify-nix.homeManagerModule
+                  inputs.nix-colors.homeManagerModule
                   ./home.nix
                 ];
 

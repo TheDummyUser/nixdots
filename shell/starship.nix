@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -95,6 +96,24 @@
         deleted = " 󱙑";
         renamed = " 󱙓";
         staged = " +($count)";
+      };
+      palettes.dynamic = {
+        fg = "#${config.colorScheme.colors.base06}";
+        bg = "#${config.colorScheme.colors.base00}";
+        red = "#${config.colorScheme.colors.base08}";
+        yellow = "#${config.colorScheme.colors.base0A}";
+        dark-yellow = "#${config.colorScheme.colors.base0A}";
+        green = "#${config.colorScheme.colors.base0B}";
+        dark-green = "#${config.colorScheme.colors.base0B}";
+        cyan = "#${config.colorScheme.colors.base0C}";
+        dark-cyan = "#${config.colorScheme.colors.base0C}";
+        blue = "#${config.colorScheme.colors.base0D}";
+        dark-blue = "#${config.colorScheme.colors.base0D}";
+        magenta = "#${config.colorScheme.colors.base0E}";
+        dark-magenta = "#${config.colorScheme.colors.base0E}";
+        orange = "#${config.colorScheme.colors.base09}";
+        gray = "#${config.colorScheme.colors.base03}";
+        dark-gray = "#${config.colorScheme.colors.base02}";
       };
     };
   };

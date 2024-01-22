@@ -1,7 +1,9 @@
 { inputs, pkgs, ... }:
-let spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+let
+  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+  nixColors = inputs.nix-colors.packages.${pkgs.system}.default;
 in {
-
+  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-light-soft;
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
@@ -34,7 +36,10 @@ in {
     gtk.enable = true;
     x11.enable = true;
   };
-
+  programs.zsh = {
+    enable = true;
+    dotDir = "/etc";
+  };
   #programs.eza = {
   #  enable = true;
   #  enableAliases = true;
@@ -46,7 +51,7 @@ in {
     ./shell/starship.nix # starship
     ./shell/eza.nix # eza
     ./shell/foot.nix # foot
-    #./shell/git.nix
+    ./shell/git.nix
 
     # config
     #./config/cava.nix
