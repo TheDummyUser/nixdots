@@ -3,7 +3,7 @@ let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
   nixColors = inputs.nix-colors.packages.${pkgs.system}.default;
 in {
-  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-light-soft;
+  colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
@@ -55,6 +55,8 @@ in {
 
     # config
     #./config/cava.nix
+    ./config/zathura.nix
+    ./config/dunst.nix
   ];
 
 }

@@ -2,8 +2,8 @@
 let
   image = pkgs.fetchurl {
     url =
-      "https://raw.githubusercontent.com/Goxore/dotfiles/50db864d56d49768f1d4d0a8c1bd7a5c74dd629e/home/Wallpapers/tokyonight-crystal.png";
-    sha256 = "sha256-fGEqdop2l+lEb5UL3m8YVtZRHwmVd5YhSKk1CIS+E6Q=";
+      "https://raw.githubusercontent.com/johnk1917/nixrland/main/wallpapers/hashira2.png";
+    sha256 = "sha256-cajDNonRwQJdvqxwnT60/ptin3K0yigce2Y/bm92lLA=";
   };
 in pkgs.stdenv.mkDerivation {
   name = "sddm-theme";

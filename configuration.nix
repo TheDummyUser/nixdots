@@ -29,7 +29,7 @@
     # options = [ "rw" "uid=gabbar" ];
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "InterSteller"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -120,11 +120,10 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    nitch
-    mov-cli
     floorp
     realesrgan-ncnn-vulkan
     ripgrep
+    pipes
     fd
     ani-cli
     feh
@@ -184,8 +183,6 @@
       install = true;
     };
   };
-
-  # swap file...
 
   # hyprland
 
