@@ -3,7 +3,7 @@ let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
   nixColors = inputs.nix-colors.packages.${pkgs.system}.default;
 in {
-  colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
+  colorScheme = inputs.nix-colors.colorSchemes.tomorrow-night;
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
@@ -39,24 +39,37 @@ in {
   programs.zsh = {
     enable = true;
     dotDir = "/etc";
+
+    initExtra = ''
+      eval "$(direnv hook zsh)"
+    '';
   };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   #programs.eza = {
   #  enable = true;
   #  enableAliases = true;
   #};
-
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
   #imports
 
   imports = [
-    #./shell/starship.nix # starship
+    ./shell/starship.nix
     ./shell/eza.nix # eza
-    ./shell/foot.nix # foot
+    #./shell/foot.nix # foot
     ./shell/git.nix
 
     # config
-    #./config/cava.nix
     ./config/zathura.nix
     ./config/dunst.nix
+    ./config/kitty.nix
   ];
 
 }

@@ -99,6 +99,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  services.blueman.enable = true;
 
   users.users.gabbar = {
     shell = pkgs.zsh;
@@ -120,6 +121,8 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
+    clang-tools
+    libclang
     floorp
     realesrgan-ncnn-vulkan
     ripgrep
@@ -150,11 +153,9 @@
     pywal
     swappy
     dunst
-    ranger
     yazi
     cava
     nodejs
-    clang
     networkmanagerapplet
     playerctl
     discord
@@ -162,7 +163,6 @@
     multimarkdown
     shellcheck
     shfmt
-    gcc
     (pkgs.callPackage ./shell/pokemon-colorscripts.nix { })
     (assert (lib.assertMsg (obsidian.version == "1.4.16")
       "obsidian: has wayland crash been fixed?");

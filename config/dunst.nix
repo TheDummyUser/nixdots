@@ -42,25 +42,20 @@
         min_icon_size = "32";
         max_icon_size = "56";
         frame_width = "3";
-      };
 
-      shortcuts = {
-        close = "ctrl+shift+space";
-        close_all = "ctrl+shift+space";
-        history = "ctrl+grave";
-        context = "ctrl+shift+period";
+        timeout = 3;
       };
 
       urgency-normal = {
-        frame_color = "#${config.colorScheme.colors.base0E}";
-        foreground = "#${config.colorScheme.colors.base06}";
+        frame_color = "#${config.colorScheme.colors.base08}";
+        foreground = "#${config.colorScheme.colors.base08}";
         background = "#${config.colorScheme.colors.base00}";
 
       };
 
       urgency-critical = {
-        frame_color = "#${config.colorScheme.colors.base0E}";
-        foreground = "#${config.colorScheme.colors.base06}";
+        frame_color = "#${config.colorScheme.colors.base09}";
+        foreground = "#${config.colorScheme.colors.base07}";
         background = "#${config.colorScheme.colors.base00}";
       };
     };

@@ -3,10 +3,7 @@
 {
   programs = {
     zsh = {
-      #loginShellInit = "wal -R";
-      #extraConfig = "(wal -R)";
-      interactiveShellInit =
-        "(wal -R) && clear && pokemon-colorscripts -r --no-title";
+      interactiveShellInit = "clear && pokemon-colorscripts -r --no-title";
       shellAliases = {
         ld = "eza --icons always -lD";
         lf = "eza --icons always -lF --color=always | grep -v /";
