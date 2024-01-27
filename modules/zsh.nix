@@ -15,7 +15,7 @@
         update =
           "cd ~/minemine && sudo nixos-rebuild switch --flake .#default && cd ~/";
         ff = "clear && fastfetch";
-        anime = "clear && ani-cli --vlc -q 1080p";
+        anime = "clear && ani-cli --mpv -q 1080p";
       };
       histSize = 10000;
       enable = true;

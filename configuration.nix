@@ -114,23 +114,22 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
   programs.kdeconnect.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    clang-tools
-    libclang
     floorp
     realesrgan-ncnn-vulkan
     ripgrep
     pipes
+    mpv
     fd
     ani-cli
+    obs-studio
+    cmake
     feh
-    colorz
     nixfmt
     neofetch
     zip
@@ -150,7 +149,6 @@
     waybar
     grim
     slurp
-    pywal
     swappy
     dunst
     yazi
@@ -163,6 +161,7 @@
     multimarkdown
     shellcheck
     shfmt
+    (pkgs.callPackage ./shell/lavat.nix { })
     (pkgs.callPackage ./shell/pokemon-colorscripts.nix { })
     (assert (lib.assertMsg (obsidian.version == "1.4.16")
       "obsidian: has wayland crash been fixed?");

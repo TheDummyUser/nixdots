@@ -1,9 +1,9 @@
-{ inputs, pkgs, ... }:
+{ config, gtkThemeFromScheme, inputs, pkgs, ... }:
 let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
   nixColors = inputs.nix-colors.packages.${pkgs.system}.default;
 in {
-  colorScheme = inputs.nix-colors.colorSchemes.tomorrow-night;
+  colorScheme = inputs.nix-colors.colorSchemes.tomorrow-night-eighties;
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
@@ -20,13 +20,31 @@ in {
 
   gtk = {
     enable = true;
-    # cursorTheme.package = pkgs.bibata-cursors;
-    # cursorTheme.name = "Bibata-Modern-Ice";
-    font.name = "JetBrains Mono";
-    theme.package = pkgs.vimix-gtk-themes;
-    theme.name = "vimix-dark-doder";
-    iconTheme.package = pkgs.papirus-icon-theme;
-    iconTheme.name = "Papirus-Dark";
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 9;
+    };
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
+    };
+    iconTheme = {
+      name = "Papirus";
+      package = pkgs.papirus-icon-theme.override { color = "bluegrey"; };
+    };
+    cursorTheme = {
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+      size = 16;
+    };
+  };
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
   };
 
   home.pointerCursor = {
@@ -45,15 +63,11 @@ in {
     '';
   };
 
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   #programs.eza = {
   #  enable = true;
   #  enableAliases = true;
   #};
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -70,6 +84,7 @@ in {
     ./config/zathura.nix
     ./config/dunst.nix
     ./config/kitty.nix
+    ./config/waybar.nix
   ];
 
 }
