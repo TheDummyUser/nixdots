@@ -11,6 +11,12 @@
       bold_italic_font = "auto";
       font_size = 12;
 
+      #pages
+      "ctrl+shift+up" = "scroll_line_up";
+      "ctrl+shift+down" = "scroll_line_down";
+      "ctrl+shift+k" = "scroll_line_up";
+      "ctrl+shift+j" = "scroll_line_down";
+
       #curosr
       cursor_spape = "block";
 

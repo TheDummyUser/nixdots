@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -121,14 +121,12 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
     floorp
-    realesrgan-ncnn-vulkan
     ripgrep
     pipes
     mpv
     fd
     ani-cli
     obs-studio
-    cmake
     feh
     nixfmt
     neofetch
@@ -163,7 +161,7 @@
     shfmt
     (pkgs.callPackage ./shell/lavat.nix { })
     (pkgs.callPackage ./shell/pokemon-colorscripts.nix { })
-    (assert (lib.assertMsg (obsidian.version == "1.4.16")
+    (assert (lib.assertMsg (obsidian.version != "1.4.16")
       "obsidian: has wayland crash been fixed?");
       obsidian.override {
         electron = electron_24.overrideAttrs (_: {
@@ -174,7 +172,6 @@
       })
   ];
   nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];
-
   services = {
     emacs = {
       enable = true;
@@ -182,7 +179,10 @@
       install = true;
     };
   };
-
+  #nixpkgs.config.permittedInsecurePackages = [
+  #  (lib.throwIf (pkgs.obsidian.version != "1.5.3")
+  #    "Obsidian no longer requires EOL Electron" "electron-25.9.0")
+  #];
   # hyprland
 
   programs.hyprland =

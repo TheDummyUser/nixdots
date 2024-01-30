@@ -1,9 +1,14 @@
-{ config, gtkThemeFromScheme, inputs, pkgs, ... }:
+{ lib, config, gtkThemeFromScheme, inputs, pkgs, ... }:
 let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
   nixColors = inputs.nix-colors.packages.${pkgs.system}.default;
+
 in {
-  colorScheme = inputs.nix-colors.colorSchemes.tomorrow-night-eighties;
+  # home.packages = [ pkgs.obsidian ];
+  # nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
+
+  # main
+  colorScheme = inputs.nix-colors.colorSchemes.silk-dark;
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
@@ -85,6 +90,7 @@ in {
     ./config/dunst.nix
     ./config/kitty.nix
     ./config/waybar.nix
+    ./config/hyprland.nix
   ];
 
 }

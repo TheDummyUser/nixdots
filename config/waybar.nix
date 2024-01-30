@@ -13,12 +13,14 @@
         "modules-right" = [ "tray" "pulseaudio" "bluetooth" "network" ];
 
         "hyprland/workspaces" = {
-          "format" = [ "{name}" "{icon}" ];
+          "format" = "{icon}";
           "tooltip" = false;
           "all-outputs" = true;
+          "sort-by-number" = true;
+          "persistent-workspaces" = { "*" = 9; };
           "format-icons" = {
-            "active" = " 󰮯 ";
-            "default" = " 󱙝 ";
+            "active" = "  ";
+            "default" = "  ";
           };
         };
         # clock
@@ -96,8 +98,8 @@
 
             #custom-arch, #workspaces {
               border-radius: 5px;
-              background-color: @base02;
-              color: @base06;
+              background-color: #${config.colorScheme.colors.base00};
+              color: #${config.colorScheme.colors.base06};
               margin-top: 5px;
               margin-right: 5px;
               padding-top: 1px;
@@ -118,8 +120,8 @@
             }
 
             #cpu, #memory, #disk {
-              background-color: @base02;
-              color: @base06;
+              background-color: #${config.colorScheme.colors.base00};
+              color: #${config.colorScheme.colors.base06};
               margin-top: 5px;
               padding-left: 5px;
               padding-right: 5px;
@@ -141,19 +143,19 @@
             #workspaces button{
                 border-radius: 5px;
                 padding: 1px 5px;
-                background-color: @base02;
+                background-color: #${config.colorScheme.colors.base00};
             }
 
             #workspaces button.active, #workspaces button.focused {
                 padding: 1px 5px;
-                background: @base02;
-                color: @base06;
+                background: #${config.colorScheme.colors.base00};
+                color: #${config.colorScheme.colors.base06};
             }
 
             #clock, #pulseaudio, #bluetooth, #network, #tray {
               border-radius: 5px;
-              background-color: @base02;
-              color: @base06;
+              background-color: #${config.colorScheme.colors.base00};
+              color: #${config.colorScheme.colors.base06};
               margin-top: 5px;
               padding-left: 5px;
               padding-right: 10px;
