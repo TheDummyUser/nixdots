@@ -65,7 +65,6 @@ in {
 
     initExtra = ''
       eval "$(direnv hook zsh)"
-      eval "$(ssh-agent -s)"
     '';
   };
 
