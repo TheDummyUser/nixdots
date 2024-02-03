@@ -8,12 +8,12 @@ in {
   # nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   # main
-  colorScheme = inputs.nix-colors.colorSchemes.silk-dark;
+  colorScheme = inputs.nix-colors.colorSchemes.ayu-mirage;
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.Dribbblish;
-    colorScheme = "Lunar";
+    theme = spicePkgs.themes.Sleek;
+    colorScheme = "BladeRunner";
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay
@@ -65,6 +65,7 @@ in {
 
     initExtra = ''
       eval "$(direnv hook zsh)"
+      eval "$(ssh-agent -s)"
     '';
   };
 
@@ -89,7 +90,7 @@ in {
     ./config/zathura.nix
     ./config/dunst.nix
     ./config/kitty.nix
-    ./config/waybar.nix
+    ./config/waybar/waybar.nix
     ./config/hyprland.nix
   ];
 

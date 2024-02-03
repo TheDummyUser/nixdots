@@ -105,7 +105,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "gabbar";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs;
       [
         #  thunderbird
@@ -139,13 +139,14 @@
     pavucontrol
     swww
     rofi
-    bashmount
-    pcmanfm
     fastfetch
+    nitch
     tree
     libsixel
     waybar
     grim
+    kdenlive
+    python311Packages.pygobject3
     slurp
     swappy
     dunst
@@ -159,6 +160,8 @@
     multimarkdown
     shellcheck
     shfmt
+vesktop
+    emacsPackages.vterm
     (pkgs.callPackage ./shell/lavat.nix { })
     (pkgs.callPackage ./shell/pokemon-colorscripts.nix { })
     (assert (lib.assertMsg (obsidian.version != "1.4.16")
@@ -170,7 +173,17 @@
           meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
         });
       })
+    gnome.nautilus
+
   ];
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
+  # kernal
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Kernal End
+
   nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];
   services = {
     emacs = {

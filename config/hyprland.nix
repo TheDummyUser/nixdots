@@ -25,7 +25,7 @@
 
       # Execute your favorite apps at launch
       exec-once = waybar & dunst
-      exec-once =  discord
+      exec-once =  vesktop
       # exec-once = foot --server
       exec-once = wl-paste -pw wl-copy
       exec-once = swww init
@@ -38,7 +38,7 @@
       # Set programs that you use
 
       $terminal = kitty
-      $fileManager = pcmanfm
+      $fileManager = files
       $menu = ~/.config/rofi/scripts/launcher_t7
 
 
@@ -94,6 +94,7 @@
           dim_inactive = true
           dim_strength = 0.1
 
+          # blurls = waybar
 
           blur {
               enabled = true
@@ -152,7 +153,6 @@
       windowrulev2 = nomaximizerequest, class:.* # You'll probably like this.
       windowrule = maximize, ^(mpv)$
       windowrule = float, ^(.blueman-manager-wrapped)$
-
       windowrulev2 = opacity 1.0 override 1.0 override,class:^(Emacs)$
       windowrulev2 = opacity 1.0 override 1.0 override,class:^(obsidian)$
       # windowrulev2 = opacity 1.0 override 1.0 override,class:^(firefox)$,title:(.*)(YouTube)(.*)$

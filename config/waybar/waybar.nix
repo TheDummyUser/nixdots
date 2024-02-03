@@ -8,7 +8,7 @@
         layer = "top";
         position = "top";
         height = 30;
-        "modules-left" = [ "clock" "cpu" "memory" "disk" ];
+        "modules-left" = [ "clock" "cpu" "memory" "disk" "window" ];
         "modules-center" = [ "hyprland/workspaces" ];
         "modules-right" = [ "tray" "pulseaudio" "bluetooth" "network" ];
 
@@ -17,7 +17,7 @@
           "tooltip" = false;
           "all-outputs" = true;
           "sort-by-number" = true;
-          "persistent-workspaces" = { "*" = 9; };
+          # "persistent-workspaces" = { "*" = 9; };
           "format-icons" = {
             "active" = "  ";
             "default" = "  ";
@@ -96,7 +96,7 @@
               background: transparent;
             }
 
-            #custom-arch, #workspaces {
+            #custom-arch, #workspaces, #cava {
               border-radius: 5px;
               background-color: #${config.colorScheme.colors.base00};
               color: #${config.colorScheme.colors.base06};
@@ -119,7 +119,7 @@
              border-bottom-right-radius: 5px;
             }
 
-            #cpu, #memory, #disk {
+            #cpu, #memory, #disk, #cava {
               background-color: #${config.colorScheme.colors.base00};
               color: #${config.colorScheme.colors.base06};
               margin-top: 5px;
@@ -130,6 +130,10 @@
 
             #disk {
               padding-right: 10px;
+            }
+
+            #cava {
+            margin-left: 5px;
             }
 
             #workspaces, #clock {
@@ -144,6 +148,7 @@
                 border-radius: 5px;
                 padding: 1px 5px;
                 background-color: #${config.colorScheme.colors.base00};
+                color: #${config.colorScheme.colors.base07}
             }
 
             #workspaces button.active, #workspaces button.focused {

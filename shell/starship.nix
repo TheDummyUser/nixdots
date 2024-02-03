@@ -21,7 +21,6 @@
         disabled = false;
         format = "[ 󰅐 $time ]($style)";
         time_format = "%T";
-        style = "  bg:red";
       };
       username = {
         disabled = false;
