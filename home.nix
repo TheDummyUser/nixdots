@@ -80,8 +80,6 @@ in {
   #imports
 
   imports = [
-    ./shell/git.nix
-
     # config
     ./config
   ];

@@ -8,8 +8,7 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./sddm/sddm.nix
-    ./modules/nix.nix
-    ./modules/zsh.nix
+    ./modules
   ];
 
   # Bootloader.
@@ -161,8 +160,8 @@
     shfmt
     vesktop
     emacsPackages.vterm
-    (pkgs.callPackage ./shell/lavat.nix { })
-    (pkgs.callPackage ./shell/pokemon-colorscripts.nix { })
+    (pkgs.callPackage ./shell/pokemon { })
+    (pkgs.callPackage ./shell/lavat { })
     (assert (lib.assertMsg (obsidian.version != "1.4.16")
       "obsidian: has wayland crash been fixed?");
       obsidian.override {
