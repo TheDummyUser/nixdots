@@ -155,12 +155,11 @@
     nodejs
     networkmanagerapplet
     playerctl
-    discord
     btop
     multimarkdown
     shellcheck
     shfmt
-vesktop
+    vesktop
     emacsPackages.vterm
     (pkgs.callPackage ./shell/lavat.nix { })
     (pkgs.callPackage ./shell/pokemon-colorscripts.nix { })

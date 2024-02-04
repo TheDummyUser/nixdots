@@ -80,17 +80,10 @@ in {
   #imports
 
   imports = [
-    ./shell/starship.nix
-    ./shell/eza.nix # eza
-    #./shell/foot.nix # foot
     ./shell/git.nix
 
     # config
-    ./config/zathura.nix
-    ./config/dunst.nix
-    ./config/kitty.nix
-    ./config/waybar/waybar.nix
-    ./config/hyprland.nix
+    ./config
   ];
 
 }

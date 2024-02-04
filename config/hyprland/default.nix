@@ -38,7 +38,7 @@
       # Set programs that you use
 
       $terminal = kitty
-      $fileManager = files
+      $fileManager = nautilus
       $menu = ~/.config/rofi/scripts/launcher_t7
 
 
@@ -76,7 +76,7 @@
 
           # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
           allow_tearing = false
-      }
+                                  }
 
       decoration {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
