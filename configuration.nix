@@ -160,6 +160,8 @@
     shfmt
     vesktop
     emacsPackages.vterm
+    swayidle
+    swaylock
     (pkgs.callPackage ./shell/pokemon { })
     (pkgs.callPackage ./shell/lavat { })
     (assert (lib.assertMsg (obsidian.version != "1.4.16")
@@ -174,7 +176,7 @@
     gnome.nautilus
 
   ];
-
+  security.pam.services.swaylock = { };
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
