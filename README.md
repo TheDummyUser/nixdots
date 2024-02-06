@@ -1,5 +1,5 @@
 
-use this following steps to clone my pc
+use this following steps to clone desktop setup!
 
 `git clone https://github.com/TheDummyUser/nixdots.git`
 
