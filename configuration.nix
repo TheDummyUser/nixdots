@@ -68,8 +68,10 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
   # Enable CUPS to print documents.
@@ -181,7 +183,7 @@
   programs.virt-manager.enable = true;
 
   # kernal
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   # Kernal End
 
   nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];

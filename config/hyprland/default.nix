@@ -30,7 +30,7 @@
       exec-once = wl-paste -pw wl-copy
       exec-once = swww init
       exec-once = dbus-update-activation-evnironment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec-once = ../scripts/sleep.sh
+      exec-once = ./sleep.sh
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
       exec-once = bash ~/.config/autostart/onStart.sh
