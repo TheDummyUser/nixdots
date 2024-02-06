@@ -30,7 +30,7 @@
       exec-once = wl-paste -pw wl-copy
       exec-once = swww init
       exec-once = dbus-update-activation-evnironment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec-once = ./sleep.sh
+      exec-once = bash ~/minemine/config/hyprland/sleep.sh
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
       exec-once = bash ~/.config/autostart/onStart.sh

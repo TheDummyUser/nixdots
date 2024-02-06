@@ -28,3 +28,14 @@ cp /etc/nixos/* ~/nixdots
 ##### cd into flake dir:
 
 `nix flake update`
+
+
+
+---
+
+i dont recommend installing this flake setup tho! its highly customised..
+
+
+if you installed it anyway, install the packages you need, few scripts will be added later into the repo!
+
+
