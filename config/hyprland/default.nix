@@ -24,17 +24,17 @@
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      exec-once = waybar & dunst
+      exec-once = waybar & dunst & blueman
       exec-once =  vesktop
       # exec-once = foot --server
       exec-once = wl-paste -pw wl-copy
       exec-once = swww init
       exec-once = dbus-update-activation-evnironment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec-once = bash ~/minemine/config/hyprland/sleep.sh
+      exec-once = bash ~/minemine/scripts/sleep.sh
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
-      exec-once = bash ~/.config/autostart/onStart.sh
-      # exec-once = bash ~/.config/autostart/rand.sh
+      exec-once = bash ~/minemine/autostart/onStart.sh
+      # exec-once = bash ~/minemine/autostart/rand.sh
       # exec-once=hyprctl setcursor Bibata-Modern-Ice 24
       # Set programs that you use
 
@@ -163,6 +163,7 @@
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = $mainMod, T, exec, $terminal
       bind = $mainMod, Q, killactive,
+      bind = $mainMod, A, exec, timestamp=$(date +'%Y-%m-%d_%H-%M-%S'); grim "$timestamp.png" && mv "$timestamp.png" ~/Pictures/
       bind = $mainMod, M, exec, ~/.config/rofi/scripts/powermenu_t6
       bind = $mainMod, F, exec, floorp
       bind = $mainMod, E, exec, $fileManager
@@ -172,8 +173,8 @@
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, D,exec, kitty yazi
       bind = $mainMod, G,exec, emacsclient -c
-      bind = $mainMod SPACE, B, exec, bash ~/.config/autostart/rand.sh
-      bind = $mainMod SHIFT, S, exec, bash ~/.config/autostart/ss.sh
+      bind = $mainMod SPACE, B, exec, bash ~/minemine/autostart/rand.sh
+      bind = $mainMod SHIFT, S, exec, bash ~/minemine/autostart/ss.sh
       bind = $mainMod, X, exec, pkill waybar || waybar
 
       # bind = $mainmod SHIFT,S, exec, $HOME/autostart/ss.sh

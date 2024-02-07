@@ -68,7 +68,7 @@
         "network" = {
           "interface" = [ "enp2s0" "wlp0s20f0u5" ];
           "format" = "{ifname}";
-          "format-wifi" = " {essid}";
+          "format-wifi" = "  {essid}";
           "format-ethernet" = "{ifname}";
           "format-disconnected" = " 󰖪 No Network";
           "tooltip" = false;
@@ -87,7 +87,7 @@
                 * {
               border: none;
               font-family: 'FiraCode Nerd Font', 'Symbols Nerd Font Mono';
-              font-size: 14px;
+              font-size: 12px;
               font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
               min-height: 35px;
             }
@@ -148,7 +148,7 @@
                 border-radius: 5px;
                 padding: 1px 5px;
                 background-color: #${config.colorScheme.colors.base00};
-                color: #${config.colorScheme.colors.base07}
+                color: #${config.colorScheme.colors.base09}
             }
 
             #workspaces button.active, #workspaces button.focused {

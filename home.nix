@@ -8,7 +8,7 @@ in {
   # nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   # main
-  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-hard;
+  colorScheme = inputs.nix-colors.colorSchemes.ayu-mirage;
   # configure spicetify :)
   programs.spicetify = {
     enable = true;

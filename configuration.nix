@@ -164,8 +164,10 @@
     emacsPackages.vterm
     swayidle
     swaylock
+    nix-init
     (pkgs.callPackage ./shell/pokemon { })
     (pkgs.callPackage ./shell/lavat { })
+    (pkgs.callPackage ./shell/dis { })
     (assert (lib.assertMsg (obsidian.version != "1.4.16")
       "obsidian: has wayland crash been fixed?");
       obsidian.override {
@@ -176,7 +178,6 @@
         });
       })
     gnome.nautilus
-
   ];
   security.pam.services.swaylock = { };
   virtualisation.libvirtd.enable = true;
