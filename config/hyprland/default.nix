@@ -24,7 +24,7 @@
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      exec-once = waybar & dunst & blueman
+      exec-once = waybar & dunst & blueman-applet
       exec-once =  vesktop
       # exec-once = foot --server
       exec-once = wl-paste -pw wl-copy
@@ -69,9 +69,9 @@
 
           gaps_in = 5
           gaps_out = 9
-          border_size = 2
-          col.active_border = rgb(${config.colorScheme.colors.base06})
-          col.inactive_border = rgb(${config.colorScheme.colors.base06})
+          border_size = 3
+          col.active_border = rgb(${config.colorScheme.colors.base09})
+          col.inactive_border = rgb(${config.colorScheme.colors.base04})
 
           layout = dwindle
 
@@ -87,7 +87,7 @@
           drop_shadow = true
           shadow_range = 4
           shadow_render_power = 1
-          col.shadow = rgba(1a1a1aee)
+          col.shadow = rgb(${config.colorScheme.colors.base00})
 
           active_opacity = 1.0
           inactive_opacity = 1.0

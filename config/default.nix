@@ -11,6 +11,5 @@
     ./kitty
     ./git
     ./swaylock
-    ./bspwm
   ];
 }

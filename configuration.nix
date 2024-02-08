@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, ... }:
+{ user, lib, config, pkgs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -102,7 +102,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   services.blueman.enable = true;
 
-  users.users.gabbar = {
+  users.users.${user} = {
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "gabbar";
@@ -168,6 +168,7 @@
     (pkgs.callPackage ./shell/pokemon { })
     (pkgs.callPackage ./shell/lavat { })
     (pkgs.callPackage ./shell/dis { })
+    (pkgs.callPackage ./shell/donut { })
     (assert (lib.assertMsg (obsidian.version != "1.4.16")
       "obsidian: has wayland crash been fixed?");
       obsidian.override {

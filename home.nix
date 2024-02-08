@@ -8,7 +8,7 @@ in {
   # nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   # main
-  colorScheme = inputs.nix-colors.colorSchemes.ayu-mirage;
+  colorScheme = inputs.nix-colors.colorSchemes.horizon-dark;
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
@@ -20,6 +20,7 @@ in {
       shuffle # shuffle+ (special characters are sanitized out of ext names)
       hidePodcasts
       adblock
+      playNext
     ];
   };
 
@@ -35,7 +36,7 @@ in {
     };
     iconTheme = {
       name = "Papirus";
-      package = pkgs.papirus-icon-theme.override { color = "bluegrey"; };
+      package = pkgs.papirus-icon-theme.override { color = "yaru"; };
     };
     cursorTheme = {
       name = "Bibata-Modern-Ice";
@@ -79,9 +80,6 @@ in {
   };
   #imports
 
-  imports = [
-    # config
-    ./config
-  ];
+  imports = [ ./config ];
 
 }

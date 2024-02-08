@@ -14,7 +14,6 @@
 
     spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
-
   outputs = inputs@{ self, nixpkgs, ... }: {
     nixosConfigurations = let user = "gabbar";
     in {
