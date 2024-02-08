@@ -14,9 +14,9 @@ rebuild system
 ```
 cd ~/nixdots
 
-rm configuration.nix hardware-configuration.nix flake.lock
+rm hardware-configuration.nix flake.lock
 
-cp /etc/nixos/* ~/nixdots
+cp /etc/nixos/hardware-configuration.nix ~/nixdots
 ```
 
 #### Open flake.nix in your text editor and change line 19 as: `let user = "your_user_name";`
