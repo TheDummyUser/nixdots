@@ -1,41 +1,24 @@
 #!/usr/bin/env sh
 
 # Change to the desired directory
-cd /mnt/Localdisk/folder/wall/ || exit
+cd /mnt/Localdisk/folder/wall/ || { echo "Unable to change directory."; exit 1; }
 
-# Get a list of all files in the directory
-files=(*)
+# Get a random file from the directory
+random_file=$(find . -maxdepth 1 -type f | shuf -n 1)
 
-# Pick a random index
-random_index=$((RANDOM % ${#files[@]}))
-
-# Pick the random file
-random_file=${files[random_index]}
+# Ensure a file was found
+if [ -z "$random_file" ]; then
+    echo "No files found in the directory."
+    exit 1
+fi
 
 # Determine whether to pick the file above or below
-direction=$((RANDOM % 2))  # 0 for above, 1 for below
 
-# Calculate the index of the file above or below
-if [ "$direction" -eq 0 ]; then
-    target_index=$((random_index - 1))
-else
-    target_index=$((random_index + 1))
-fi
+# Define the signal
+signal="SIGUSR2"
 
-# Ensure the target index is within bounds
-if [ "$target_index" -ge 0 ] && [ "$target_index" -lt "${#files[@]}" ]; then
-    target_file=${files[target_index]}
+# Calculate the transition type
+swww img "$random_file" --transition-type wipe --transition-angle 45 --transition-step 60 --transition-fps 60
 
-
-    swww img "$random_file" --transition-type wipe --transition-angle 10 --transition-step 90 --transition-fps 90
-
-    # Output the selected file above or below
-    # notify-send "Selected file: $target_file"
-    
-     # Send SIGUSR1 to each waybar process
-    for pid in $(pgrep -x ".waybar-wrapped"); do
-        kill -SIGUSR2 "$pid"
-    done
-else
-    notify-send "Not enough files or invalid index for the selected direction."
-fi
+# Send the signal to each waybar process
+pgrep -x ".waybar-wrapped" | xargs -I {} kill -"$signal" "{}"

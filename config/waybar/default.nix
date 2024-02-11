@@ -8,63 +8,60 @@
         layer = "top";
         position = "top";
         height = 30;
-        "modules-left" = [ "clock" "cpu" "memory" "disk" "window" ];
-        "modules-center" = [ "hyprland/workspaces" ];
-        "modules-right" = [ "tray" "pulseaudio" "bluetooth" "network" ];
+        modules-left = [ "clock" ];
+        modules-center = [ "hyprland/workspaces" ];
+        modules-right = [ "tray" "bluetooth" "network" ];
+
+        "clock" = {
+          "intervel" = 60;
+          "format" = "{:%H:%M}";
+          "max-length" = 25;
+        };
 
         "hyprland/workspaces" = {
           "format" = "{icon}";
-          "tooltip" = false;
+          "tooltip" = "false";
           "all-outputs" = true;
           "sort-by-number" = true;
-          # "persistent-workspaces" = { "*" = 9; };
           "format-icons" = {
-            "active" = "  ";
-            "default" = "  ";
+            "active" = " 󰮯 ";
+            "default" = " 󰊠 ";
           };
+          #"persistent-workspaces" = {
+          #  "*" = 9; # 5 workspaces by default on every monitor
+          # };
         };
-        # clock
-        "clock" = {
-          "format" = "  {:%H:%M}"; # format and icon
+
+        "tray" = {
+          "icon-size" = 12;
+          "spacing" = 5;
         };
-        #cpu
-        "cpu" = {
-          "interval" = 10;
-          "format" = "{}% ";
-          "max-length" = 10;
-        };
-        # memory
-        "memory" = {
-          "interval" = 30;
-          "format" = "{}% ";
-          "max-length" = 10;
-        };
-        #disk
-        "disk" = {
-          "interval" = 30;
-          "format" = "{percentage_free} 󰄫";
-          "path" = "/";
-        };
-        # sound
-        "pulseaudio" = {
-          "format" = " {icon} {volume}%";
-          "format-muted" = "󰝟";
-          "tooltip" = false;
-          "format-icons" = {
-            "headphone" = "";
-            "default" = [ "" "" "󰕾" "󰕾" "󰕾" "" "" "" ];
-          };
-          "scroll-step" = 1;
-        };
-        # blue-tooth
+
         "bluetooth" = {
-          "format" = "  {status}";
-          "format-disabled" = ""; # an empty format will hide the module
-          "format-connected" = "  {num_connections}";
-          "tooltip-format" = "{device_enumerate}";
+          "format" = " {status}";
+          "format-connected" = " {device_alias}";
+          "format-connected-battery" =
+            " {device_alias} {device_battery_percentage}%";
+          "format-device-preference" = [
+            "device1"
+            "device2"
+          ]; # // preference list deciding the displayed device
+          "tooltip-format" = ''
+            {controller_alias}	{controller_address}
+
+            {num_connections} connected'';
+          "tooltip-format-connected" = ''
+            {controller_alias}	{controller_address}
+
+            {num_connections} connected
+
+            {device_enumerate}'';
           "tooltip-format-enumerate-connected" =
-            "{device_alias}   {device_address}";
+            "{device_alias}	{device_address}";
+          "tooltip-format-enumerate-connected-battery" =
+            "{device_alias}	{device_address}	{device_battery_percentage}%";
         };
+
         "network" = {
           "interface" = [ "enp2s0" "wlp0s20f0u5" ];
           "format" = "{ifname}";
@@ -73,124 +70,52 @@
           "format-disconnected" = " 󰖪 No Network";
           "tooltip" = false;
         };
-        "tray" = {
-          "icon-size" = 18;
-          "spacing" = 9;
-        };
-
-        #end
       };
     };
     style = ''
-      @import '/home/gabbar/.config/waybar/color-waybar.css';
-
-                * {
+      * {
               border: none;
-              font-family: 'FiraCode Nerd Font', 'Symbols Nerd Font Mono';
+              font-family: 'JetBrainsMono Nerd Font';
               font-size: 12px;
               font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-              min-height: 35px;
+              min-height: 30px;
             }
+
 
             window#waybar {
-              background: transparent;
+             background:transparent;
             }
 
-            #custom-arch, #workspaces, #cava {
-              border-radius: 5px;
-              background-color: #${config.colorScheme.colors.base00};
-              color: #${config.colorScheme.colors.base06};
-              margin-top: 5px;
-              margin-right: 5px;
-              padding-top: 1px;
-              padding-left: 5px;
-              padding-right: 5px;
+            #clock,#workspaces,#tray,#bluetooth,#network {
+            background-color: #${config.colorScheme.colors.base00};
+            color: #${config.colorScheme.colors.base06};
+            margin-top: 5px;
+            margin-left: 5px;
+            border-radius: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
             }
 
-            #cpu {
-              margin-left: 5px;
-              border-top-left-radius: 5px;
-              border-bottom-left-radius: 5px;
-              padding-left: 15px;
-            }
-
-            #disk {
-             border-top-right-radius: 5px;
-             border-bottom-right-radius: 5px;
-            }
-
-            #cpu, #memory, #disk, #cava {
-              background-color: #${config.colorScheme.colors.base00};
-              color: #${config.colorScheme.colors.base06};
-              margin-top: 5px;
-              padding-left: 5px;
-              padding-right: 5px;
-              font-size: 14px;
-            }
-
-            #disk {
-              padding-right: 10px;
-            }
-
-            #cava {
+            #clock {
             margin-left: 5px;
             }
-
-            #workspaces, #clock {
-                margin-top: 5px;
-                border-radius: 5px;
-                margin-right: 10px;
-                margin-left: 5px;
-                color: @base06;
-            }
-
-            #workspaces button{
-                border-radius: 5px;
-                padding: 1px 5px;
-                background-color: #${config.colorScheme.colors.base00};
-                color: #${config.colorScheme.colors.base09}
-            }
-
-            #workspaces button.active, #workspaces button.focused {
-                padding: 1px 5px;
-                background: #${config.colorScheme.colors.base00};
-                color: #${config.colorScheme.colors.base06};
-            }
-
-            #clock, #pulseaudio, #bluetooth, #network, #tray {
-              border-radius: 5px;
-              background-color: #${config.colorScheme.colors.base00};
-              color: #${config.colorScheme.colors.base06};
-              margin-top: 5px;
-              padding-left: 5px;
-              padding-right: 10px;
-              margin-right: 5px;
-            }
-
-            #bluetooth {
-              border-top-right-radius: 0;
-              border-bottom-right-radius: 0;
-              padding-right: 5px;
-              margin-right: 0
-            }
-
-            #pulseaudio, #network {
-              border-top-left-radius: 5px;
-              border-bottom-left-radius: 5px;
-              padding-left: 5px;
-            }
-            #pulseaudio,#tray {
-              padding-left: 10px;
+            #tray {
+            font-size:12px;
             }
             #network {
-              border-bottom-left-radius: 0;
-              border-top-left-radius: 0;
+            margin-right: 5px;
             }
-            #clock {
-              margin-right: 0;
+            #workspaces button {
+            background-color: #${config.colorScheme.colors.base00};
+            color: #${config.colorScheme.colors.base0A};
             }
 
+            #workspaces button.active {
+            background: #${config.colorScheme.colors.base00};
+            color: #${config.colorScheme.colors.base06};
+            }
 
     '';
+
   };
 }

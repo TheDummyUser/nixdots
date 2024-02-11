@@ -169,6 +169,7 @@
     (pkgs.callPackage ./shell/lavat { })
     (pkgs.callPackage ./shell/dis { })
     (pkgs.callPackage ./shell/donut { })
+    (pkgs.callPackage ./shell/mov-cli { })
     (assert (lib.assertMsg (obsidian.version != "1.4.16")
       "obsidian: has wayland crash been fixed?");
       obsidian.override {

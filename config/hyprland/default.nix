@@ -68,11 +68,10 @@
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
           gaps_in = 5
-          gaps_out = 9
+          gaps_out = 7
           border_size = 3
           col.active_border = rgb(${config.colorScheme.colors.base09})
           col.inactive_border = rgb(${config.colorScheme.colors.base04})
-
           layout = dwindle
 
           # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
@@ -89,8 +88,8 @@
           shadow_render_power = 1
           col.shadow = rgb(${config.colorScheme.colors.base00})
 
-          active_opacity = 1.0
-          inactive_opacity = 1.0
+          active_opacity = 1
+          inactive_opacity = 1
           fullscreen_opacity = 1.0
           dim_inactive = true
           dim_strength = 0.1
@@ -98,7 +97,7 @@
           # blurls = waybar
 
           blur {
-              enabled = true
+              enabled = flase
               size = 6
               passes = 1
               ignore_opacity = true
@@ -154,20 +153,22 @@
       windowrulev2 = nomaximizerequest, class:.* # You'll probably like this.
       windowrule = maximize, ^(mpv)$
       windowrule = float, ^(.blueman-manager-wrapped)$
-      windowrulev2 = opacity 1.0 override 1.0 override,class:^(Emacs)$
-      windowrulev2 = opacity 1.0 override 1.0 override,class:^(obsidian)$
-      # windowrulev2 = opacity 1.0 override 1.0 override,class:^(firefox)$,title:(.*)(YouTube)(.*)$
+      windowrule=idleinhibit fullscreen, firefox
+      windowrule=idleinhibit fullscreen, vlc
+      windowrule=idleinhibit focus,YouTube
+      windowrule=idleinhibit focus,mpv
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
       $mainMod = SUPER
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = $mainMod, T, exec, $terminal
       bind = $mainMod, Q, killactive,
-      bind = $mainMod, A, exec, timestamp=$(date +'%Y-%m-%d_%H-%M-%S'); grim "$timestamp.png" && mv "$timestamp.png" ~/Pictures/
+      bind = $mainMod, A, exec, timestamp=$(date +'%Y-%m-%d_%H-%M-%S'); grim -c "$timestamp.png" && mv "$timestamp.png" ~/Pictures/
       bind = $mainMod, M, exec, ~/.config/rofi/scripts/powermenu_t6
       bind = $mainMod, F, exec, floorp
       bind = $mainMod, E, exec, $fileManager
       bind = $mainMod, V, togglefloating,
+      bind = $mainMod, N, exec, ~/minemine/scripts/wall.sh
       bind = $mainMod, R, exec, $menu
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
