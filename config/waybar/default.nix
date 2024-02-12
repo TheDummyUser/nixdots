@@ -8,13 +8,14 @@
         layer = "top";
         position = "top";
         height = 30;
+        margin-left = 5;
         modules-left = [ "clock" ];
         modules-center = [ "hyprland/workspaces" ];
-        modules-right = [ "tray" "bluetooth" "network" ];
+        modules-right = [ "pulseaudio" "tray" "bluetooth" "network" ];
 
         "clock" = {
           "intervel" = 60;
-          "format" = "{:%H:%M}";
+          "format" = "󰥔 {:%H:%M}";
           "max-length" = 25;
         };
 
@@ -38,10 +39,10 @@
         };
 
         "bluetooth" = {
-          "format" = " {status}";
-          "format-connected" = " {device_alias}";
+          "format" = " {status}";
+          "format-connected" = " {device_alias}";
           "format-connected-battery" =
-            " {device_alias} {device_battery_percentage}%";
+            " {device_alias} {device_battery_percentage}%";
           "format-device-preference" = [
             "device1"
             "device2"
@@ -65,45 +66,52 @@
         "network" = {
           "interface" = [ "enp2s0" "wlp0s20f0u5" ];
           "format" = "{ifname}";
-          "format-wifi" = "  {essid}";
+          "format-wifi" = "󰤨 {essid}";
           "format-ethernet" = "{ifname}";
-          "format-disconnected" = " 󰖪 No Network";
+          "format-disconnected" = "󰤭 No Network";
           "tooltip" = false;
+        };
+        "pulseaudio" = {
+          "format" = " {icon} {volume}%";
+          "format-muted" = "󰝟";
+          "tooltip" = false;
+          "format-icons" = {
+            "headphone" = "";
+            "default" = [ "" "" "󰕾" "󰕾" "󰕾" "" "" "" ];
+          };
         };
       };
     };
     style = ''
       * {
               border: none;
-              font-family: 'JetBrainsMono Nerd Font';
-              font-size: 12px;
+              font-family:'FiraCode Nerd Font', 'Symbols Nerd Font Mono' ;
+              font-size: 13px;
               font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
               min-height: 30px;
             }
 
 
             window#waybar {
-             background:transparent;
+             background: transparent;
             }
 
-            #clock,#workspaces,#tray,#bluetooth,#network {
+            #clock,#workspaces,#tray,#bluetooth,#network,#pulseaudio {
             background-color: #${config.colorScheme.colors.base00};
             color: #${config.colorScheme.colors.base06};
-            margin-top: 5px;
-            margin-left: 5px;
             border-radius: 10px;
             padding-left: 10px;
             padding-right: 10px;
+            margin-top:5px;
+            margin-right: 5px;
             }
 
-            #clock {
-            margin-left: 5px;
+            #tray,#bluetooth,#pulseaudio {
+            margin-right: 5px;
             }
+
             #tray {
             font-size:12px;
-            }
-            #network {
-            margin-right: 5px;
             }
             #workspaces button {
             background-color: #${config.colorScheme.colors.base00};

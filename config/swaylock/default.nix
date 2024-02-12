@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
-
-{
+let
+  image = pkgs.fetchurl {
+    url = "https://w.wallhaven.cc/full/7p/wallhaven-7po93e.png";
+    sha256 = "sha256-3/i57uqUBZneFCBAw0Zj1qIleYbWSfhNaXvxFS9s2l0=";
+  };
+in {
   programs = {
     swaylock = {
       enable = true;
@@ -12,7 +16,7 @@
         indicator-radius = 100;
         show-failed-attempts = true;
         line-color = "${config.colorScheme.colors.base02}";
-        image = "/mnt/Localdisk/folder/wall/0005.jpg";
+        image = "${image}";
       };
     };
   };

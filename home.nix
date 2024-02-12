@@ -8,7 +8,7 @@ in {
   # nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   # main
-  colorScheme = inputs.nix-colors.colorSchemes.horizon-dark;
+  colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
@@ -23,7 +23,6 @@ in {
       playNext
     ];
   };
-
   gtk = {
     enable = true;
     font = {

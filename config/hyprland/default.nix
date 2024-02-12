@@ -40,7 +40,7 @@
 
       $terminal = kitty
       $fileManager = nautilus
-      $menu = ~/.config/rofi/scripts/launcher_t7
+      $menu = rofi -show drun
 
 
       # Some default env vars.
@@ -164,11 +164,11 @@
       bind = $mainMod, T, exec, $terminal
       bind = $mainMod, Q, killactive,
       bind = $mainMod, A, exec, timestamp=$(date +'%Y-%m-%d_%H-%M-%S'); grim -c "$timestamp.png" && mv "$timestamp.png" ~/Pictures/
-      bind = $mainMod, M, exec, ~/.config/rofi/scripts/powermenu_t6
+      bind = $mainMod, M, exec, ~/minemine/scripts/power.sh
       bind = $mainMod, F, exec, floorp
       bind = $mainMod, E, exec, $fileManager
       bind = $mainMod, V, togglefloating,
-      bind = $mainMod, N, exec, ~/minemine/scripts/wall.sh
+      bind = $mainMod, N, exec, $HOME/minemine/scripts/wall.sh
       bind = $mainMod, R, exec, $menu
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
