@@ -121,12 +121,24 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
+    curl
+    wget
     floorp
     ripgrep
     pipes
     mpv
+    vscode
+    nix-output-monitor
     fd
-    ani-cli
+    (pkgs.ani-cli.overrideAttrs rec {
+      version = "4.8";
+      src = fetchFromGitHub {
+        owner = "pystardust";
+        repo = "ani-cli";
+        rev = "v${version}";
+        hash = "sha256-vntCiWaONndjU622c1BoCoASQxQf/i7yO0x+70OxzPU=";
+      };
+    })
     obs-studio
     feh
     nixfmt
@@ -142,12 +154,9 @@
     rofi
     fastfetch
     nitch
-    tree
-    libsixel
     waybar
     grim
     kdenlive
-    python311Packages.pygobject3
     slurp
     swappy
     dunst
@@ -202,7 +211,6 @@
   #    "Obsidian no longer requires EOL Electron" "electron-25.9.0")
   #];
   # hyprland
-
   programs.hyprland =
     { # we use this instead of putting it in systemPackages/users
       enable = true;
