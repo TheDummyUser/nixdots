@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 let
   image = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/7p/wallhaven-7po93e.png";
-    sha256 = "sha256-3/i57uqUBZneFCBAw0Zj1qIleYbWSfhNaXvxFS9s2l0=";
+    url = "https://w.wallhaven.cc/full/4d/wallhaven-4dg7do.jpg";
+    sha256 = "sha256-NQU+1iYd67k7ixmHk5yE3cb0TpRwWXZKLgBI5DoS3yQ=";
   };
 in {
   home.file.".config/rofi/config.rasi".text = ''
@@ -141,5 +141,4 @@ in {
     }
 
   '';
-
 }

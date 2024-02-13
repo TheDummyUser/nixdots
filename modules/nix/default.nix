@@ -11,5 +11,8 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+    extraOptions = ''
+      warn-dirty = false
+    '';
   };
 }

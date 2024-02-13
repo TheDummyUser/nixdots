@@ -112,7 +112,6 @@
         #  thunderbird
       ];
   };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   programs.kdeconnect.enable = true;
@@ -128,8 +127,9 @@
     pipes
     mpv
     vscode
-    nix-output-monitor
     fd
+    mpd
+    ncmpcpp
     (pkgs.ani-cli.overrideAttrs rec {
       version = "4.8";
       src = fetchFromGitHub {
@@ -144,6 +144,7 @@
     nixfmt
     neofetch
     zip
+    sxhkd
     unzip
     vlc
     kdeconnect
@@ -210,6 +211,7 @@
   #  (lib.throwIf (pkgs.obsidian.version != "1.5.3")
   #    "Obsidian no longer requires EOL Electron" "electron-25.9.0")
   #];
+  services.xserver.windowManager.bspwm.enable = true;
   # hyprland
   programs.hyprland =
     { # we use this instead of putting it in systemPackages/users

@@ -5,6 +5,7 @@
     ./waybar
     ./hyprland
     ./dunst
+    ./rofi
     ./zathura
     ./eza
     ./starship
