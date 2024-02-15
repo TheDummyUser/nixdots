@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  #home.packages = [ (pkgs.callPackage ./spotify-tui { }) ];
   imports = [
     ./waybar
     ./hyprland

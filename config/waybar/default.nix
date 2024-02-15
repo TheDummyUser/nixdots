@@ -115,12 +115,12 @@
             }
             #workspaces button {
             background-color: #${config.colorScheme.colors.base00};
-            color: #${config.colorScheme.colors.base0A};
+            color: #${config.colorScheme.colors.base03};
             }
 
             #workspaces button.active {
             background: #${config.colorScheme.colors.base00};
-            color: #${config.colorScheme.colors.base06};
+            color: #${config.colorScheme.colors.base05};
             }
 
     '';

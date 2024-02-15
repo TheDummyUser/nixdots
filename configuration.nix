@@ -106,7 +106,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "gabbar";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs;
       [
         #  thunderbird
@@ -139,12 +139,10 @@
         hash = "sha256-vntCiWaONndjU622c1BoCoASQxQf/i7yO0x+70OxzPU=";
       };
     })
-    obs-studio
     feh
     nixfmt
     neofetch
     zip
-    sxhkd
     unzip
     vlc
     kdeconnect
@@ -192,8 +190,6 @@
     gnome.nautilus
   ];
   security.pam.services.swaylock = { };
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
 
   # kernal
   boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -211,7 +207,6 @@
   #  (lib.throwIf (pkgs.obsidian.version != "1.5.3")
   #    "Obsidian no longer requires EOL Electron" "electron-25.9.0")
   #];
-  services.xserver.windowManager.bspwm.enable = true;
   # hyprland
   programs.hyprland =
     { # we use this instead of putting it in systemPackages/users

@@ -19,43 +19,36 @@
       # Don't keep original image colors while recoloring
       recolor-reverse-video = "false";
 
-      default-fg = "#dadada";
-      default-bg = "rgba(20, 27, 30, 0.95)";
+      default-bg = "#${config.colorScheme.colors.base00}";
+      default-fg = "#${config.colorScheme.colors.base01}";
 
-      completion-bg = "#141b1e";
-      completion-fg = "#dadada";
-      completion-highlight-bg = "#141b1e";
-      completion-highlight-fg = "#dadada";
-      completion-group-bg = "#141b1e";
-      completion-group-fg = "#67cbe7";
+      statusbar-fg = "#${config.colorScheme.colors.base04}";
+      statusbar-bg = "#${config.colorScheme.colors.base02}";
 
-      statusbar-fg = "#dadada";
-      statusbar-bg = "#141b1e";
+      inputbar-bg = "#${config.colorScheme.colors.base00}";
+      inputbar-fg = "#${config.colorScheme.colors.base08}";
 
-      notification-bg = "#141b1e";
-      notification-fg = "#dadada";
-      notification-error-bg = "#141b1e";
-      notification-error-fg = "#e57474";
-      notification-warning-bg = "#141b1e";
-      notification-warning-fg = "#dadada";
+      notification-bg = "#${config.colorScheme.colors.base00}";
+      notification-fg = "#${config.colorScheme.colors.base07}";
 
-      inputbar-fg = "#dadada";
-      inputbar-bg = "#141b1e";
+      notification-error-bg = "#${config.colorScheme.colors.base00}";
+      notification-error-fg = "#${config.colorScheme.colors.base08}";
 
-      recolor-lightcolor = "rgba(0, 0, 0, 0)";
-      recolor-darkcolor = "#dadada";
+      notification-warning-bg = "#${config.colorScheme.colors.base00}";
+      notification-warning-fg = "#${config.colorScheme.colors.base08}";
 
-      index-fg = "#dadada";
-      index-bg = "#141b1e";
-      index-active-fg = "#dadada";
-      index-active-bg = "#141b1e";
+      highlight-color = "#${config.colorScheme.colors.base0A}";
+      highlight-active-color = "#${config.colorScheme.colors.base0D}";
 
-      render-loading-bg = "#141b1e";
-      render-loading-fg = "#dadada";
+      completion-bg = "#${config.colorScheme.colors.base01}";
+      completion-fg = "#${config.colorScheme.colors.base0D}";
 
-      highlight-color = "#2d3437";
-      highlight-fg = "#dadada";
-      highlight-active-color = "#dadada";
+      completion-highlight-fg = "#${config.colorScheme.colors.base07}";
+      completion-highlight-bg = "#${config.colorScheme.colors.base0D}";
+
+      recolor-lightcolor = "#${config.colorScheme.colors.base00}";
+      recolor-darkcolor = "#${config.colorScheme.colors.base06}";
+
     };
   };
 }
