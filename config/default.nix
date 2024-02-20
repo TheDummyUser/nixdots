@@ -3,6 +3,7 @@
 {
   #home.packages = [ (pkgs.callPackage ./spotify-tui { }) ];
   imports = [
+    #./nixvim
     ./waybar
     ./hyprland
     ./dunst

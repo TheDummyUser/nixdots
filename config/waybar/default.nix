@@ -99,7 +99,7 @@
             #clock,#workspaces,#tray,#bluetooth,#network,#pulseaudio {
             background-color: #${config.colorScheme.colors.base00};
             color: #${config.colorScheme.colors.base06};
-            border-radius: 10px;
+            border-radius: 5px;
             padding-left: 10px;
             padding-right: 10px;
             margin-top:5px;
@@ -112,6 +112,9 @@
 
             #tray {
             font-size:12px;
+            }
+            #workspaces {
+            padding: 0px 5px
             }
             #workspaces button {
             background-color: #${config.colorScheme.colors.base00};

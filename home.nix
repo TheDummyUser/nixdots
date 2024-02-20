@@ -2,18 +2,18 @@
 let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
   nixColors = inputs.nix-colors.packages.${pkgs.system}.default;
-
+  nixvim = inputs.nixvim.packages.${pkgs.system}.default;
 in {
   # home.packages = [ pkgs.obsidian ];
   # nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   # main
-  colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
+  colorScheme = inputs.nix-colors.colorSchemes.ayu-mirage;
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.Sleek;
-    colorScheme = "BladeRunner";
+    theme = spicePkgs.themes.Dribbblish;
+    colorScheme = "rosepine";
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay

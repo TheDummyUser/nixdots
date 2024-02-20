@@ -168,13 +168,13 @@
       bind = $mainMod, F, exec, floorp
       bind = $mainMod, E, exec, $fileManager
       bind = $mainMod, V, togglefloating,
-      bind = $mainMod, N, exec, $HOME/minemine/scripts/wall.sh
+      bind = $mainMod, N, exec, bash $HOME/minemine/scripts/wall.sh
       bind = $mainMod, R, exec, $menu
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, D,exec, kitty yazi
       bind = $mainMod, G,exec, emacsclient -c
-      bind = $mainMod SPACE, B, exec, bash ~/minemine/autostart/rand.sh
+      bind = $mainMod SPACE, B, exec, python ~/minemine/scripts/systest.py
       bind = $mainMod SHIFT, S, exec, bash ~/minemine/autostart/ss.sh
       bind = $mainMod, X, exec, pkill waybar || waybar
 

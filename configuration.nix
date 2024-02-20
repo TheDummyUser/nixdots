@@ -173,6 +173,9 @@
     swayidle
     swaylock
     nix-init
+    nixd
+    python3
+    libreoffice
     (pkgs.callPackage ./shell/pokemon { })
     (pkgs.callPackage ./shell/lavat { })
     (pkgs.callPackage ./shell/dis { })

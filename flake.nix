@@ -3,6 +3,13 @@
 
   inputs = {
     nix-colors.url = "github:misterio77/nix-colors";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # change to github:nixos/nixpkgs/nixos-unstable for unstable
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -11,7 +18,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
   outputs = inputs@{ self, nixpkgs, ... }: {
@@ -39,6 +45,7 @@
                 imports = [
                   inputs.spicetify-nix.homeManagerModule
                   inputs.nix-colors.homeManagerModule
+                  inputs.nixvim.homeManagerModules.nixvim
                   ./home.nix
                 ];
 

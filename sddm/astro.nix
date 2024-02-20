@@ -1,8 +1,8 @@
 { pkgs }:
 let
   image = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/7p/wallhaven-7po93e.png";
-    sha256 = "sha256-3/i57uqUBZneFCBAw0Zj1qIleYbWSfhNaXvxFS9s2l0=";
+    url = "https://w.wallhaven.cc/full/6d/wallhaven-6dgyvq.jpg";
+    sha256 = "sha256-1aszGgqK2hqDRkgOIkmozxlEi5yZgLXToDA4cKSvleI=";
   };
 in pkgs.stdenv.mkDerivation {
   name = "sddm-theme";
