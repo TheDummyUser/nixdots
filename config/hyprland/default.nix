@@ -26,7 +26,7 @@
       # Execute your favorite apps at launch
       exec-once = waybar & dunst & blueman-applet
       exec-once =  vesktop
-      # exec-once = foot --server
+      exec-once = foot --server
       exec-once = wl-paste -pw wl-copy
       exec-once = swww init
       exec-once = dbus-update-activation-evnironment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -38,7 +38,7 @@
       # exec-once=hyprctl setcursor Bibata-Modern-Ice 24
       # Set programs that you use
 
-      $terminal = kitty
+      $terminal = foot
       $fileManager = nautilus
       $menu = rofi -show drun
 
@@ -146,7 +146,7 @@
       }
 
       # Example windowrule v1
-      # windowrule = float, ^(kitty)$
+      # windowrule = float, ^(foot)$
       # Example windowrule v2
       # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
       # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
@@ -172,7 +172,7 @@
       bind = $mainMod, R, exec, $menu
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
-      bind = $mainMod, D,exec, kitty yazi
+      bind = $mainMod, D,exec, foot yazi
       bind = $mainMod, G,exec, emacsclient -c
       bind = $mainMod SPACE, B, exec, python ~/minemine/scripts/systest.py
       bind = $mainMod SHIFT, S, exec, bash ~/minemine/autostart/ss.sh

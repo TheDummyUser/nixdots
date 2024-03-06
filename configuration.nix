@@ -161,7 +161,6 @@
     dunst
     yazi
     cava
-    nodejs
     networkmanagerapplet
     playerctl
     btop
@@ -175,6 +174,7 @@
     nix-init
     nixd
     python3
+    vscodium
     libreoffice
     (pkgs.callPackage ./shell/pokemon { })
     (pkgs.callPackage ./shell/lavat { })
@@ -198,7 +198,8 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
   # Kernal End
 
-  nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" "python2" ];
+
   services = {
     emacs = {
       enable = true;
